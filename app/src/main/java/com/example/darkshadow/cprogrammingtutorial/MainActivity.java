@@ -29,7 +29,7 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private ArrayAdapter<String> listAdapter ;
-    private int viewno;
+    private int viewno,chapterOnGoing;
     Ad ad=new Ad();
     private ListView listView;
     ScrollView tutorialview;
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity
                     chaptername.setText(strings.chapter[position][0]);
                     tutorial.setText(strings.chapter[position][1]);
                     tutorialview.setScrollY(0);
+                    chapterOnGoing=position;
 
             }
         });
@@ -95,13 +96,25 @@ public class MainActivity extends AppCompatActivity
         backword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                backwordForwardController(0);
+                if (chapterOnGoing>0){
+                    chapterOnGoing=chapterOnGoing-1;
+                    backwordForwardController(0);
+                }
+                else {
+                    Toast.makeText(MainActivity.this,"Nothing Before",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                backwordForwardController(1);
+                if (chapterOnGoing<4){
+                    chapterOnGoing=chapterOnGoing+1;
+                    backwordForwardController(1);
+                }
+                else {
+                    Toast.makeText(MainActivity.this,"Nothing Next",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -172,15 +185,12 @@ public class MainActivity extends AppCompatActivity
             chapterlistview.setVisibility(View.VISIBLE);
             viewno=1;
         }
-        //return viewNo;
+        //return viewNo; done
     }
 
     public void backwordForwardController(int no){
-        if (no==0){
-            Toast.makeText(MainActivity.this,"Back Pressed",Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(MainActivity.this,"Next Pressed",Toast.LENGTH_SHORT).show();
-        }
+            chaptername.setText(strings.chapter[chapterOnGoing][0]);
+            tutorial.setText(strings.chapter[chapterOnGoing][1]);
+            tutorialview.setScrollY(0);
     }
 }
