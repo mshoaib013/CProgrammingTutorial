@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "189934159762",
+    "firebase_url": "https://cprogrammingtutorial-fd780.firebaseio.com",
+    "project_id": "cprogrammingtutorial-fd780",
+    "storage_bucket": "cprogrammingtutorial-fd780.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189934159762:android:da5192f389f16e0f",
+        "android_client_info": {
+          "package_name": "com.example.darkshadow.cprogrammingtutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "189934159762-17r2a190bqrj8vs15sivrsdog9o7c57v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.darkshadow.cprogrammingtutorial",
+            "certificate_hash": "bc54a686d5d1e5a2b3d203cbae00f6ffdde91648"
+          }
+        },
+        {
+          "client_id": "189934159762-6tv4mvveb539d6d6q8eqt1h54u9nk2u8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjmqyKqDPQW4sQ9eiXxTt9njN-u3T48YI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189934159762-6tv4mvveb539d6d6q8eqt1h54u9nk2u8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
