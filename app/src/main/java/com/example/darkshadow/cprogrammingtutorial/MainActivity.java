@@ -16,7 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity
     ImageView backword,forward;
     TextView tutorial;
     TextView chaptername;
+    Button gridOne;
+    LinearLayout menuGridView;
     strings strings=new strings();
 
     @Override
@@ -53,13 +57,18 @@ public class MainActivity extends AppCompatActivity
         forward=(ImageView) findViewById(R.id.forward);
         tutorial=(TextView) findViewById(R.id.tutorial);
         chaptername=(TextView) findViewById(R.id.chaptername);
+        gridOne=(Button) findViewById(R.id.gridOne);
+        menuGridView=(LinearLayout) findViewById(R.id.menu);
 
         String[] chapters = new String[] { "Chapter one", "Chapter two", "Chapter three", "Mars",
                 "Jupiter", "Saturn", "Uranus", "Neptune"};
-        ArrayList<String> chapterlist = new ArrayList<String>();
+        final ArrayList<String> chapterlist = new ArrayList<String>();
         chapterlist.addAll(Arrays.asList(chapters));
         listAdapter = new ArrayAdapter<String>(this, R.layout.listview, chapterlist);
         listView.setAdapter(listAdapter);
+
+
+
         //
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -115,6 +124,13 @@ public class MainActivity extends AppCompatActivity
                 else {
                     Toast.makeText(MainActivity.this,"Nothing Next",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        gridOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuGridView.setVisibility(View.GONE);
+                chapterlistview.setVisibility(View.VISIBLE);
             }
         });
     }
