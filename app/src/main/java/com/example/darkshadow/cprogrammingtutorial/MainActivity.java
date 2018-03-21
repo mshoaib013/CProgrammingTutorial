@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity
         chaptername=(TextView) findViewById(R.id.chaptername);
         gridOne=(Button) findViewById(R.id.gridOne);
         menuGridView=(LinearLayout) findViewById(R.id.menu);
+        viewno=0;
 
         String[] chapters = new String[] { "Chapter one", "Chapter two", "Chapter three", "Mars",
                 "Jupiter", "Saturn", "Uranus", "Neptune"};
@@ -73,7 +74,11 @@ public class MainActivity extends AppCompatActivity
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    switchView();
+                    //switchView();
+                    menuGridView.setVisibility(View.GONE);
+                    chapterlistview.setVisibility(View.GONE);
+                    tutorialview.setVisibility(View.VISIBLE);
+                    viewno=2;
                     chaptername.setText(strings.chapter[position][0]);
                     tutorial.setText(strings.chapter[position][1]);
                     tutorialview.setScrollY(0);
@@ -131,6 +136,8 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 menuGridView.setVisibility(View.GONE);
                 chapterlistview.setVisibility(View.VISIBLE);
+                tutorialview.setVisibility(View.GONE);
+                viewno=1;
             }
         });
     }
@@ -141,8 +148,17 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }
-        else if (viewno==0){
-            switchView();
+        else if (viewno==2){
+            chapterlistview.setVisibility(View.VISIBLE);
+            tutorialview.setVisibility(View.GONE);
+            menuGridView.setVisibility(View.GONE);
+            viewno=1;
+        }
+        else if (viewno==1){
+            chapterlistview.setVisibility(View.GONE);
+            tutorialview.setVisibility(View.GONE);
+            menuGridView.setVisibility(View.VISIBLE);
+            viewno=0;
         }
         else {
             super.onBackPressed();
@@ -191,15 +207,23 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void switchView(){
-        if(tutorialview.getVisibility()==View.GONE){
-            tutorialview.setVisibility(View.VISIBLE);
-            chapterlistview.setVisibility(View.GONE);
-            viewno=0;
-        }
-        else {
+        if(tutorialview.getVisibility()==View.GONE && chapterlistview.getVisibility()==View.GONE){
             tutorialview.setVisibility(View.GONE);
             chapterlistview.setVisibility(View.VISIBLE);
+            menuGridView.setVisibility(View.GONE);
+            viewno=0;
+        }
+        else if (menuGridView.getVisibility()==View.GONE && tutorialview.getVisibility()==View.GONE){
+            tutorialview.setVisibility(View.GONE);
+            chapterlistview.setVisibility(View.VISIBLE);
+            menuGridView.setVisibility(View.GONE);
             viewno=1;
+        }
+        else {
+            menuGridView.setVisibility(View.GONE);
+            chapterlistview.setVisibility(View.GONE);
+            tutorialview.setVisibility(View.VISIBLE);
+            viewno=2;
         }
         //return viewNo; done
     }
